@@ -58,3 +58,7 @@ export const flyAndScale = (
 		easing: cubicOut,
 	}
 }
+
+export const serializeNonPOJOs = <T>(obj: T): T => {
+	return structuredClone(obj)
+}

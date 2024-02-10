@@ -4,8 +4,10 @@
 	import { Navbar } from '$lib/components/nav'
 </script>
 
-<ModeWatcher />
-<Navbar />
-<main class="p-5 md:px-10">
-	<slot />
-</main>
+<ModeWatcher defaultMode="light" />
+<div class="flex h-svh flex-col">
+	<Navbar />
+	<main class="flex-auto p-5 md:px-10">
+		<slot />
+	</main>
+</div>
