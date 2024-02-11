@@ -1,6 +1,11 @@
 <script lang="ts">
 	import * as Tabs from '$lib/components/ui/tabs'
 	import { LoginForm, RegisterForm, isRegisterOrLogin } from '.'
+	import type { SuperValidated } from 'sveltekit-superforms'
+	import { type LoginSchema } from '$lib/schema'
+
+	export let loginForm: SuperValidated<LoginSchema>
+	export let registerForm: SuperValidated<LoginSchema>
 </script>
 
 <Tabs.Root
@@ -15,9 +20,9 @@
 		<Tabs.Trigger value="login">Login</Tabs.Trigger>
 	</Tabs.List>
 	<Tabs.Content value="register">
-		<RegisterForm />
+		<RegisterForm form={registerForm} />
 	</Tabs.Content>
 	<Tabs.Content value="login">
-		<LoginForm />
+		<LoginForm form={loginForm} />
 	</Tabs.Content>
 </Tabs.Root>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types'
-	import { ScholarshipCard } from '@/lib/components/scholarship-card'
+	import { ScholarshipCard } from '$lib/components/scholarship-card'
 	import * as Pagination from '$lib/components/ui/pagination'
 	import { ChevronLeft, ChevronRight } from 'radix-icons-svelte'
 	import { goto } from '$app/navigation'

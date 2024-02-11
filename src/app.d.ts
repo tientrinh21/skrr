@@ -1,3 +1,4 @@
+import type { User } from '$lib/types'
 import PocketBase from 'pocketbase'
 
 // See https://kit.svelte.dev/docs/types#app
@@ -7,6 +8,7 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			pb: PocketBase
+			user: User | undefined
 		}
 		// interface PageData {}
 		// interface PageState {}

@@ -5,6 +5,7 @@
 	import { Button } from '$lib/components/ui/button'
 	import { navItems } from '.'
 	import { isRegisterOrLogin } from '$lib/components/register-login'
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu'
 
 	let className: string | undefined | null = undefined
 	export { className as class }
@@ -42,10 +43,20 @@
 		</div>
 	</div>
 	<div class="flex items-center gap-2">
-		<Button href="/account" on:click={() => ($isRegisterOrLogin = 'register')}>Register</Button>
-		<Button variant="secondary" href="/account" on:click={() => ($isRegisterOrLogin = 'login')}>
-			Login
-		</Button>
+		{#if !$page.data.user}
+			<Button href="/account/login" on:click={() => ($isRegisterOrLogin = 'register')}>
+				Register
+			</Button>
+			<Button
+				variant="secondary"
+				href="/account/login"
+				on:click={() => ($isRegisterOrLogin = 'login')}
+			>
+				Login
+			</Button>
+		{:else}
+			<Button>User</Button>
+		{/if}
 		<ModeToggle />
 	</div>
 </nav>

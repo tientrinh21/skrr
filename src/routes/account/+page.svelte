@@ -1,14 +1,5 @@
 <script lang="ts">
-	import { RegisterLoginTabs } from '$lib/components/register-login'
+	import type { PageData } from './$types'
 
-	// import type { PageData } from '../account/$types'
-	// export let data: PageData
-
-	let isAuthenticated = false
+	export let data: PageData
 </script>
-
-{#if !isAuthenticated}
-	<div class="mt-24 grid justify-center">
-		<RegisterLoginTabs />
-	</div>
-{/if}

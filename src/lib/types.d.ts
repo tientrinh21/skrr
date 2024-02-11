@@ -6,3 +6,12 @@ interface Scholarship {
 	grade_level: string[]
 }
 export type { Scholarship }
+
+interface User {
+	id: string
+	username: string
+	email: string
+	name: string
+	avatar?: string
+}
+export type { User }
