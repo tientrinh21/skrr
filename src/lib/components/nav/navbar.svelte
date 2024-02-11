@@ -12,23 +12,26 @@
 
 <nav
 	class={cn(
-		'mx-2 flex items-baseline justify-between gap-10 rounded-none rounded-b-xl border-2 border-t-0 p-5 shadow-md dark:shadow-muted md:mx-5 md:px-10',
+		'mx-2 flex items-baseline justify-between gap-10 rounded-none rounded-b-xl border-2 border-t-0 p-5 shadow-md dark:shadow-muted lg:mx-5 lg:px-10',
 		className,
 	)}
 >
-	<div class="flex items-baseline gap-5 md:gap-10">
-		<div class="flex items-baseline gap-2">
-			<HamburgerMenu class="md:hidden" />
-			<h1 class="cursor-pointer text-2xl font-bold text-primary hover:text-primary/90">
-				<a href="/">SKrr</a>
-			</h1>
+	<div class="flex items-baseline gap-5 lg:gap-12">
+		<div class="flex items-baseline gap-2.5">
+			<HamburgerMenu class="lg:hidden" />
+			<a href="/" class="flex items-baseline gap-2">
+				<img src="/skrr-logo.png" alt="SKrr logo" class="block h-9 place-self-center" />
+				<h1 class="cursor-pointer text-2xl font-bold text-primary hover:text-primary/90">
+					SKrr
+				</h1>
+			</a>
 		</div>
-		<div class="hidden items-center space-x-5 md:flex">
+		<div class="hidden items-center space-x-8 lg:flex">
 			{#each navItems as { title, path }}
 				<a
 					href={path}
 					class={cn(
-						'text-sm font-medium transition-colors hover:text-muted-foreground',
+						'text-base font-medium transition-colors hover:text-muted-foreground',
 						$page.url.pathname === path &&
 							'font-bold text-primary hover:text-primary/80',
 					)}

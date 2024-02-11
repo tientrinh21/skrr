@@ -1,5 +1,8 @@
 <script lang="ts">
 </script>
 
-<h1 class="text-center text-xl font-bold">Home</h1>
-<h2>Hello, this is home!</h2>
+<h1
+	class="my-10 text-center text-2xl font-bold underline decoration-primary decoration-wavy decoration-[3px] underline-offset-[6px]"
+>
+	Home
+</h1>

@@ -1,6 +1,9 @@
-// import User from 'pocketbase'
+interface Scholarship {
+	company_name: string
+	university: string
+	major: string
+	duration: Date
+	grade_level: string[]
+}
 
-// interface User extends Record {
-// 	id: string
-// 	name: string
-// }
+export type { Scholarship }
