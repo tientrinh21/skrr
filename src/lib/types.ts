@@ -5,5 +5,4 @@ interface Scholarship {
 	duration: Date
 	grade_level: string[]
 }
-
 export type { Scholarship }

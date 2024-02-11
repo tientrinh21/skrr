@@ -62,3 +62,15 @@ export const flyAndScale = (
 export const serializeNonPOJOs = <T>(obj: T): T => {
 	return structuredClone(obj)
 }
+
+export const convertPathnameToTitle = (pathname: string): string => {
+	const p = pathname.slice(1)
+	const title = 'SKrr - '
+
+	switch (p) {
+		case '':
+			return title.concat('Home')
+		default:
+			return title.concat(p.charAt(0).toUpperCase(), p.slice(1))
+	}
+}
