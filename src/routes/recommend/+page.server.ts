@@ -2,6 +2,7 @@ import type { PageServerLoad } from './$types'
 import type { Scholarship } from '$lib/types'
 import { redirect } from '@sveltejs/kit'
 import { toast } from 'svelte-sonner'
+import { goto } from '$app/navigation'
 
 export const load = (async ({ locals }) => {
 	!locals.pb.authStore.isValid && redirect(303, '/account/login')

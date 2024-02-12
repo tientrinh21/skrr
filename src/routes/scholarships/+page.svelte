@@ -1,26 +1,30 @@
 <script lang="ts">
 	import type { PageData } from './$types'
-	import { ScholarshipCard } from '$lib/components/scholarship-card'
 	import * as Pagination from '$lib/components/ui/pagination'
+	import { ScholarshipCard } from '$lib/components/scholarship-card'
 	import { ChevronLeft, ChevronRight } from 'radix-icons-svelte'
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
+	import { mediaQuery } from 'svelte-legos'
 
 	export let data: PageData
 
 	$: ({ items, totalItems, perPage, page: pageNumber } = data.scholarships)
+
+	const isMobile = mediaQuery('(max-width: 640px)')
+	$: siblingCount = $isMobile ? 0 : 1
 </script>
 
 <h1
-	class="my-10 text-center text-2xl font-bold underline decoration-primary decoration-wavy decoration-[3px] underline-offset-[6px]"
+	class="mb-10 mt-8 text-center text-2xl font-bold underline decoration-primary decoration-wavy decoration-[3px] underline-offset-[6px]"
 >
 	Scholarships
 </h1>
 <div
-	class="mb-10 grid gap-5 rounded-xl border-2 px-5 pt-8 shadow-md dark:shadow-muted md:mx-5 md:px-10 md:pt-10 lg:grid-cols-2"
+	class="mb-10 grid gap-5 rounded-xl border-2 px-5 pt-8 shadow-md dark:shadow-muted md:mx-5 md:px-7 md:pt-10 lg:grid-cols-2"
 >
-	{#each items as { company_name, duration, grade_level }}
-		<ScholarshipCard companyName={company_name} {duration} gradeLevel={grade_level} />
+	{#each items as item}
+		<ScholarshipCard scholarship={item} />
 	{/each}
 
 	<div class="mb-5 mt-2 lg:col-span-2">
@@ -28,7 +32,7 @@
 			count={totalItems}
 			{perPage}
 			page={pageNumber}
-			siblingCount={1}
+			{siblingCount}
 			let:pages
 			let:currentPage
 			onPageChange={async (pageChange) => {

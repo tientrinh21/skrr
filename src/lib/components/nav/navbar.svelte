@@ -14,6 +14,9 @@
 	export { className as class }
 
 	$: user = $page.data.user
+	$: avatarUrl = user.avatar
+		? `https://skrr.pockethost.io/api/files/_pb_users_auth_/${user.id}/${user.avatar}`
+		: 'https://github.com/shadcn.png'
 </script>
 
 <nav
@@ -68,10 +71,7 @@
 					<Button builders={[builder]} variant="outline" class={className}>
 						<span>{user.name}</span>
 						<Avatar.Root class="ml-3 h-5 w-auto">
-							<Avatar.Image
-								src="https://github.com/shadcn.png"
-								alt={`@${user.username}`}
-							/>
+							<Avatar.Image src={avatarUrl} alt={`@${user.username}`} />
 							<Avatar.Fallback>CN</Avatar.Fallback>
 						</Avatar.Root>
 					</Button>

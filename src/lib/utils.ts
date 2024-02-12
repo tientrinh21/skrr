@@ -80,3 +80,26 @@ export const isEmptyObj = (obj: Object): boolean => {
 	if (!Object.keys(obj).length) return true
 	return false
 }
+
+export const badgeOutputForMultipleChoicesRequirement = ({
+	array,
+	unit,
+}: {
+	array: string[]
+	unit: string
+}): string[] => {
+	if (!array.length) return []
+
+	const output: string[] = []
+	const numArray: number[] = array.filter(Number).map(Number)
+
+	if (numArray.length > 2)
+		output.push(`${Math.min(...numArray)}~${Math.max(...numArray)} ${unit}`)
+
+	if (numArray.length === 1) output.push(`${numArray[0]} ${unit}`)
+
+	const stringArrOfNumArr = numArray.map(String)
+	array.forEach((e) => !stringArrOfNumArr.includes(e) && output.push(e))
+
+	return output
+}

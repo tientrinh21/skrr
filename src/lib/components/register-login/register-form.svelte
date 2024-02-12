@@ -12,7 +12,7 @@
 
 	const options: FormOptions<ResgisterSchema> = {
 		onSubmit() {
-			toast.info('Creating account...')
+			toast.loading('Creating account...')
 		},
 		async onResult({ result }) {
 			if (result.status === 400) toast.error('Error!')

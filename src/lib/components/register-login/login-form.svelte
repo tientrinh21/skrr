@@ -11,13 +11,14 @@
 
 	const options: FormOptions<LoginSchema> = {
 		onSubmit() {
-			toast.info('Loging in...')
+			toast.loading('Loging in...')
 		},
 		async onResult({ result }) {
 			if (result.status === 400) toast.error('Error!')
 			if (result.status === 200) {
 				toast.success('Done')
-				await setTimeout(async () => await goto('/scholarships'), 300)
+				await goto('/scholarships')
+				// await setTimeout(async () => await goto('/scholarships'), 300)
 			}
 		},
 	}
@@ -40,7 +41,7 @@
 		<Card.Content class="space-y-3">
 			<Form.Field {config} name="username">
 				<Form.Item class="space-y-2">
-					<Form.Label>Username</Form.Label>
+					<Form.Label>Username / Email</Form.Label>
 					<Form.Input />
 					<Form.Validation />
 				</Form.Item>
