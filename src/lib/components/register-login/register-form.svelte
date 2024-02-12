@@ -4,7 +4,6 @@
 	import type { SuperValidated } from 'sveltekit-superforms'
 	import type { FormOptions } from 'formsnap'
 	import { registerSchema, type ResgisterSchema } from '$lib/schema'
-	import { Toaster } from '$lib/components/ui/sonner'
 	import { toast } from 'svelte-sonner'
 	import { goto } from '$app/navigation'
 	import { isRegisterOrLogin } from '.'
@@ -13,12 +12,12 @@
 
 	const options: FormOptions<ResgisterSchema> = {
 		onSubmit() {
-			toast('Submitting...')
+			toast.info('Creating account...')
 		},
 		async onResult({ result }) {
 			if (result.status === 400) toast.error('Error!')
 			if (result.status === 200) {
-				toast.success('Success!')
+				toast.success('Success')
 				$isRegisterOrLogin = 'login'
 				await goto('/account/login')
 			}
@@ -33,9 +32,9 @@
 	method="POST"
 	action="?/register"
 	let:config
-	debug={true}
+	debug={false}
 >
-	<Card.Root>
+	<Card.Root class="shadow-md shadow-primary/80  dark:shadow-primary/70">
 		<Card.Header>
 			<Card.Title>Resigter</Card.Title>
 			<Card.Description
@@ -80,4 +79,3 @@
 		</Card.Footer>
 	</Card.Root>
 </Form.Root>
-<Toaster richColors />

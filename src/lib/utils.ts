@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { cubicOut } from 'svelte/easing'
 import type { TransitionConfig } from 'svelte/transition'
+import type { boolean } from 'zod'
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
@@ -73,4 +74,9 @@ export const convertPathnameToTitle = (pathname: string): string => {
 		default:
 			return title.concat(p.charAt(0).toUpperCase(), p.slice(1))
 	}
+}
+
+export const isEmptyObj = (obj: Object): boolean => {
+	if (!Object.keys(obj).length) return true
+	return false
 }

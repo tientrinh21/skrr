@@ -4,7 +4,6 @@
 	import type { SuperValidated } from 'sveltekit-superforms'
 	import type { FormOptions } from 'formsnap'
 	import { loginSchema, type LoginSchema } from '$lib/schema'
-	import { Toaster } from '$lib/components/ui/sonner'
 	import { toast } from 'svelte-sonner'
 	import { goto } from '$app/navigation'
 
@@ -12,11 +11,12 @@
 
 	const options: FormOptions<LoginSchema> = {
 		onSubmit() {
-			toast('Submitting...')
+			toast.info('Loging in...')
 		},
 		async onResult({ result }) {
 			if (result.status === 400) toast.error('Error!')
 			if (result.status === 200) {
+				toast.success('Done')
 				await setTimeout(() => goto('/scholarships'), 300)
 			}
 		},
@@ -30,9 +30,9 @@
 	method="POST"
 	action="?/login"
 	let:config
-	debug={true}
+	debug={false}
 >
-	<Card.Root>
+	<Card.Root class="shadow-md shadow-primary/80 dark:shadow-primary/70">
 		<Card.Header>
 			<Card.Title>Login</Card.Title>
 			<Card.Description>Enter your login information here.</Card.Description>
@@ -61,4 +61,3 @@
 		</Card.Footer>
 	</Card.Root>
 </Form.Root>
-<Toaster richColors />

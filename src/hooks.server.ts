@@ -1,4 +1,5 @@
 import type { Handle } from '@sveltejs/kit'
+import type { User } from '$lib/types'
 import PocketBase from 'pocketbase'
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -15,6 +16,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 		// clear the auth store on failed refresh
 		event.locals.pb.authStore.clear()
 	}
+
+	event.locals.user = event.locals.pb.authStore.isValid
+		? (event.locals.pb.authStore.model as User)
+		: <User>{}
+	// : undefined
 
 	const response = await resolve(event)
 

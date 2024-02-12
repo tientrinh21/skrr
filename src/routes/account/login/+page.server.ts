@@ -1,9 +1,11 @@
 import type { PageServerLoad, Actions } from './$types'
-import { fail } from '@sveltejs/kit'
+import { fail, redirect } from '@sveltejs/kit'
 import { superValidate } from 'sveltekit-superforms/server'
 import { loginSchema, registerSchema } from '$lib/schema'
 
-export const load = (async () => {
+export const load = (async ({ locals }) => {
+	locals.pb.authStore.isValid && redirect(303, '/scholarships')
+
 	// Different schemas, so no id required.
 	const loginForm = await superValidate(loginSchema)
 	const registerForm = await superValidate(registerSchema)
@@ -27,8 +29,6 @@ export const actions: Actions = {
 			console.log('Error:', err)
 			return fail(400, { loginForm })
 		}
-
-		locals.pb.authStore.clear()
 
 		return { loginForm }
 	},

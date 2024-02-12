@@ -8,7 +8,7 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			pb: PocketBase
-			user: User | undefined
+			user: User
 		}
 		// interface PageData {}
 		// interface PageState {}
