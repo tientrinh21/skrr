@@ -17,7 +17,7 @@
 			if (result.status === 400) toast.error('Error!')
 			if (result.status === 200) {
 				toast.success('Done')
-				await setTimeout(() => goto('/scholarships'), 300)
+				await setTimeout(async () => await goto('/scholarships'), 300)
 			}
 		},
 	}

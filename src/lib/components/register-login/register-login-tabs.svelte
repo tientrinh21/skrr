@@ -10,7 +10,7 @@
 
 <Tabs.Root
 	value={$isRegisterOrLogin}
-	class="mt-5 w-full px-10 sm:w-[25rem]"
+	class="mb-5 mt-12 w-full max-w-[25rem] sm:mt-10"
 	onValueChange={(val) => {
 		$isRegisterOrLogin = val ?? $isRegisterOrLogin
 	}}
