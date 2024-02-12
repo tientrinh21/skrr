@@ -38,7 +38,7 @@
 			<span class="sr-only">Menu</span>
 		</Button>
 	</DropdownMenu.Trigger>
-	<DropdownMenu.Content align="start" class="w-56">
+	<DropdownMenu.Content align="center" class="w-56">
 		{#each navItems as { path, title }}
 			<a
 				href={path}
@@ -58,7 +58,9 @@
 				class={cn('bg-primary text-sm font-medium transition-colors')}
 				on:click={() => ($isRegisterOrLogin = 'register')}
 			>
-				<DropdownMenu.Item class="mt-2 justify-center bg-primary">
+				<DropdownMenu.Item
+					class="mt-2 justify-center bg-primary text-secondary dark:text-secondary-foreground"
+				>
 					Register
 				</DropdownMenu.Item>
 			</a>
