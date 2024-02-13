@@ -2,7 +2,6 @@ import type { PageServerLoad, Actions } from './$types'
 import { fail, redirect } from '@sveltejs/kit'
 import { superValidate } from 'sveltekit-superforms/server'
 import { loginSchema, registerSchema } from '$lib/schema'
-import { toast } from 'svelte-sonner'
 
 export const load = (async ({ locals }) => {
 	locals.pb.authStore.isValid && redirect(303, '/scholarships')
@@ -26,7 +25,8 @@ export const actions: Actions = {
 			await locals.pb
 				.collection('users')
 				.authWithPassword(loginForm.data.username, loginForm.data.password)
-		} catch (_) {
+		} catch (err) {
+			console.error(err)
 			return fail(400, { loginForm })
 		}
 
@@ -40,7 +40,7 @@ export const actions: Actions = {
 
 		// Register user
 		try {
-			const record = await locals.pb
+			await locals.pb
 				.collection('users')
 				.create({ name: registerForm.data.username, ...registerForm.data })
 		} catch (err) {

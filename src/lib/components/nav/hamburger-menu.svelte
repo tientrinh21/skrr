@@ -8,13 +8,14 @@
 	import * as Avatar from '$lib/components/ui/avatar'
 	import { Button } from '$lib/components/ui/button'
 	import { HamburgerMenu, Cross2, Exit, Person } from 'radix-icons-svelte'
+	import type { User } from '$lib/types'
 
 	let className: string | undefined | null = undefined
 	export { className as class }
 
 	let open = false
 
-	$: user = $page.data.user
+	$: user = $page.data.user as User
 	$: avatarUrl = user.avatar
 		? `https://skrr.pockethost.io/api/files/_pb_users_auth_/${user.id}/${user.avatar}`
 		: 'https://github.com/shadcn.png'

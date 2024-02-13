@@ -1,20 +1,15 @@
 <script lang="ts">
 	import '../app.pcss'
 	import { ModeWatcher } from 'mode-watcher'
+	import { Toaster } from '$lib/components/ui/sonner'
 	import { Navbar } from '$lib/components/nav'
+	import { getRouteTitle } from '$lib/utils'
 	import { page } from '$app/stores'
+	import { mediaQuery } from 'svelte-legos'
 
-	const getTitle = (path: string): string => {
-		const p = path.slice(1)
-		switch (p) {
-			case '':
-				return 'Home'
-			default:
-				return `${p.charAt(0).toUpperCase()}${p.slice(1)}`
-		}
-	}
+	const isMobile = mediaQuery('(max-width: 640px)')
 
-	$: title = getTitle($page.url.pathname)
+	$: title = getRouteTitle($page.url.pathname)
 </script>
 
 <svelte:head>
@@ -28,3 +23,4 @@
 		<slot />
 	</main>
 </div>
+<Toaster richColors closeButton expand={!$isMobile} />

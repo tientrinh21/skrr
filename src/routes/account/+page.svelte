@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { AccountForm } from '$lib/components/account-form'
 	import type { PageData } from './$types'
-	import { Toaster } from '$lib/components/ui/sonner'
 
 	export let data: PageData
 </script>
@@ -10,9 +10,9 @@
 >
 	Account
 </h1>
+
 <div
-	class="mb-10 grid gap-5 rounded-xl border-2 px-5 pt-8 shadow-md dark:shadow-muted md:mx-5 md:px-7 md:pt-10 lg:grid-cols-2"
+	class="mb-7 grid gap-5 rounded-xl border-2 px-5 pt-8 shadow-md dark:shadow-muted md:mx-5 md:px-7 md:pt-10"
 >
-	This is account content
+	<AccountForm form={data.form} />
 </div>
-<Toaster richColors closeButton />

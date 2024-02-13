@@ -13,3 +13,16 @@ export const registerSchema = z.object({
 	passwordConfirm: z.string().min(8).max(50),
 })
 export type ResgisterSchema = typeof registerSchema
+
+export const accountSchema = z
+	.object({
+		name: z.string(),
+		university: z.string(),
+		major: z.string(),
+		grade: z.string(),
+		gpa: z.string(),
+		income: z.string(),
+		region: z.string(),
+	})
+	.partial()
+export type AccountSchema = typeof accountSchema

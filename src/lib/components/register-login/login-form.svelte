@@ -1,24 +1,23 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card'
 	import * as Form from '$lib/components/ui/form'
-	import type { SuperValidated } from 'sveltekit-superforms'
-	import type { FormOptions } from 'formsnap'
 	import { loginSchema, type LoginSchema } from '$lib/schema'
 	import { toast } from 'svelte-sonner'
 	import { goto } from '$app/navigation'
+	import type { SuperValidated } from 'sveltekit-superforms'
+	import type { FormOptions } from 'formsnap'
 
 	export let form: SuperValidated<LoginSchema>
 
 	const options: FormOptions<LoginSchema> = {
 		onSubmit() {
-			toast.loading('Loging in...')
+			toast('Loging in...')
 		},
 		async onResult({ result }) {
 			if (result.status === 400) toast.error('Error!')
 			if (result.status === 200) {
 				toast.success('Done')
 				await goto('/scholarships')
-				// await setTimeout(async () => await goto('/scholarships'), 300)
 			}
 		},
 	}

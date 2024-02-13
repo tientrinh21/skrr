@@ -2,7 +2,8 @@ import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { cubicOut } from 'svelte/easing'
 import type { TransitionConfig } from 'svelte/transition'
-import type { boolean } from 'zod'
+import { accountSchema } from './schema'
+import { z } from 'zod'
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
@@ -60,10 +61,6 @@ export const flyAndScale = (
 	}
 }
 
-export const serializeNonPOJOs = <T>(obj: T): T => {
-	return structuredClone(obj)
-}
-
 export const convertPathnameToTitle = (pathname: string): string => {
 	const p = pathname.slice(1)
 	const title = 'SKrr - '
@@ -102,4 +99,80 @@ export const badgeOutputForMultipleChoicesRequirement = ({
 	array.forEach((e) => !stringArrOfNumArr.includes(e) && output.push(e))
 
 	return output
+}
+
+export const generateFilterParam = ({
+	duration = '@now',
+	id = null,
+	income = null,
+	grade = null,
+	gpa = null,
+	university = null,
+	major = null,
+	region = null,
+}: {
+	duration?: string
+	id?: string | null
+	income?: string | null
+	grade?: string | null
+	gpa?: number | null
+	university?: string | null
+	major?: string | null
+	region?: string | null
+}): string => {
+	const duratonFilter = `duration > ${duration}`
+	const idFilter = id ? `&& id = '${id}'` : ''
+
+	const incomeFilter = income
+		? `&& (income_requirement = '[]' || income_requirement ~ '${income}')`
+		: ''
+	const gradeFilter = grade ? `&& (grade_level = '[]' || grade_level ~ '${grade}')` : ''
+	const gpaFilter = (gpa ?? 0) > 0 ? `&& GPA_requirement <= ${gpa}` : ''
+	const universityFilter = university
+		? `&& (university = null || university ~ '${university})'`
+		: ''
+	const majorFilter = major ? `&& (major = null || major ~ '${major}')` : ''
+	const regionFilter = region ? `&& (region = null || region ~ '${region}')` : ''
+
+	return `${duratonFilter} ${idFilter} ${incomeFilter} ${gradeFilter} ${gpaFilter} ${universityFilter} ${universityFilter} ${majorFilter} ${regionFilter}`
+}
+
+export const getRouteTitle = (path: string): string => {
+	const p = path.slice(1)
+	switch (p) {
+		case '':
+			return 'Home'
+		default:
+			return `${p.charAt(0).toUpperCase()}${p.slice(1)}`
+	}
+}
+
+type AccountType = z.infer<typeof accountSchema>
+
+export const checkForAccountFormFilled = (data: AccountType): boolean => {
+	for (const key in data) {
+		const d = data[key as keyof typeof data]
+		if (d !== undefined && d !== 'undefined') {
+			return true
+		}
+	}
+	return false
+}
+
+export const isGPAInfoValid = (gpa: string | undefined) => {
+	return Number.isFinite(parseFloat(gpa as string))
+}
+
+export const proccessAccountData = (data: AccountType): Object => {
+	const name = data.name
+	const university = data.university
+	const major = data.major
+	const region = data.region
+	const income = data.income === 'undefined' ? undefined : data.income
+	const grade = data.grade === 'undefined' ? undefined : data.grade
+
+	const numDataGPA = parseFloat(data.gpa as string)
+	const gpa = numDataGPA > 0 ? numDataGPA : undefined
+
+	return { name, university, major, region, income, grade, gpa }
 }

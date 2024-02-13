@@ -1,13 +1,21 @@
 import type { PageServerLoad } from './$types'
 import type { Scholarship } from '$lib/types'
+import { generateFilterParam } from '@/lib/utils'
 import { redirect } from '@sveltejs/kit'
-import { toast } from 'svelte-sonner'
-import { goto } from '$app/navigation'
 
-export const load = (async ({ locals }) => {
+export const load = (async ({ locals, url }) => {
 	!locals.pb.authStore.isValid && redirect(303, '/account/login')
 
-	const scholarships = await locals.pb.collection('scholarships').getList<Scholarship>(1, 10, {
+	// User info for filter params
+	const { income, grade, gpa, university, major, region } = locals.user
+
+	const page = Number(url.searchParams.get('page')) || 1
+	const filter = generateFilterParam({ income, grade, gpa, major, region })
+	console.log(filter)
+
+	// Fetch data
+	const scholarships = await locals.pb.collection('scholarships').getList<Scholarship>(page, 10, {
+		filter,
 		sort: 'duration',
 	})
 

@@ -19,8 +19,8 @@ interface User {
 	email: string
 	name: string
 	avatar?: string
-	grade_level: string
-	GPA: number
+	grade: string
+	gpa: number
 	income: string
 	university?: string
 	major?: string

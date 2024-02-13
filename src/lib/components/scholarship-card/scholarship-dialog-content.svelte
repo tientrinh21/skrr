@@ -7,7 +7,6 @@
 	import { mediaQuery } from 'svelte-legos'
 
 	export let scholarship: Scholarship
-	// console.log(scholarship)
 
 	const isMobile = mediaQuery('(max-width: 640px)')
 
@@ -27,7 +26,7 @@
 
 	const incomeRequirementBageOutput = badgeOutputForMultipleChoicesRequirement({
 		array: scholarship.income_requirement,
-		unit: '분위',
+		unit: '구간',
 	})
 </script>
 
@@ -152,6 +151,23 @@
 				</span>
 			{:else}
 				<span class="ml-1 font-bold">전국</span>
+			{/if}
+		</div>
+	</div>
+	<div class="flex items-center justify-start gap-1.5">
+		<h3
+			class="mr-5 block w-24 place-self-start underline decoration-primary decoration-dashed decoration-[3px] underline-offset-[6px] sm:w-52"
+		>
+			{$isMobile ? 'Specific' : 'Specific Qualifications'}
+		</h3>
+
+		<div class="flex flex-wrap items-center justify-start gap-1.5">
+			{#if scholarship.specific_qualifications}
+				<span class="ml-1 max-h-20 max-w-64 truncate text-pretty font-bold">
+					{scholarship.specific_qualifications}
+				</span>
+			{:else}
+				<span class="ml-1 font-bold text-muted-foreground">없음</span>
 			{/if}
 		</div>
 	</div>
