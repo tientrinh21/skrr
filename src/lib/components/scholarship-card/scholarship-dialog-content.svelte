@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as Drawer from '$lib/components/ui/drawer'
 	import * as Dialog from '$lib/components/ui/dialog'
 	import { Badge } from '$lib/components/ui/badge'
 	import { Button } from '$lib/components/ui/button'
@@ -158,14 +159,37 @@
 		<h3
 			class="mr-5 block w-24 place-self-start underline decoration-primary decoration-dashed decoration-[3px] underline-offset-[6px] sm:w-52"
 		>
-			{$isMobile ? 'Specific' : 'Specific Qualifications'}
+			{$isMobile ? 'Specific' : 'Specific qualifications'}
 		</h3>
 
 		<div class="flex flex-wrap items-center justify-start gap-1.5">
 			{#if scholarship.specific_qualifications}
-				<span class="ml-1 max-h-20 max-w-64 truncate text-pretty font-bold">
+				<Drawer.Root>
+					<Drawer.Trigger
+						class="ml-1 max-h-20 max-w-80 truncate text-pretty text-left font-bold sm:max-h-56"
+					>
+						{scholarship.specific_qualifications}
+					</Drawer.Trigger>
+					<Drawer.Content>
+						<div class="mx-auto w-full max-w-xl">
+							<Drawer.Header>
+								<Drawer.Title>Specific qualifications</Drawer.Title>
+							</Drawer.Header>
+							<div class="mx-5 my-3 text-wrap text-left">
+								{scholarship.specific_qualifications}
+							</div>
+							<Drawer.Footer>
+								<Drawer.Close asChild let:builder>
+									<Button builders={[builder]}>Close</Button>
+								</Drawer.Close>
+							</Drawer.Footer>
+						</div>
+					</Drawer.Content>
+				</Drawer.Root>
+
+				<!-- <span class="ml-1 max-h-20 max-w-64 truncate text-pretty font-bold">
 					{scholarship.specific_qualifications}
-				</span>
+				</span> -->
 			{:else}
 				<span class="ml-1 font-bold text-muted-foreground">없음</span>
 			{/if}

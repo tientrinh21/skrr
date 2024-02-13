@@ -14,7 +14,7 @@ export const load = (async ({ locals, url }) => {
 
 	// Fetch data
 	const scholarships = await locals.pb.collection('scholarships').getList<Scholarship>(page, 10, {
-		// filter,
+		filter,
 		sort: 'duration',
 	})
 
