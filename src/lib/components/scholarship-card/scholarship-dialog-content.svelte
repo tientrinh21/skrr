@@ -166,7 +166,7 @@
 			{#if scholarship.specific_qualifications}
 				<Drawer.Root>
 					<Drawer.Trigger
-						class="ml-1 max-h-20 max-w-80 truncate text-pretty text-left font-bold sm:max-h-56"
+						class="ml-1 max-h-20 truncate text-pretty text-left font-bold sm:max-h-56 sm:max-w-80"
 					>
 						{scholarship.specific_qualifications}
 					</Drawer.Trigger>
