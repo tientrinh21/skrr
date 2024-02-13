@@ -162,6 +162,7 @@
 >
 	<Button
 		href={scholarship.website_url.toString()}
+		target="_blank"
 		variant="default"
 		class="w-full max-w-72 sm:order-2 sm:w-2/5">Apply</Button
 	>
