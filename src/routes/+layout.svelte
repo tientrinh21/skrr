@@ -19,7 +19,7 @@
 <ModeWatcher defaultMode="light" />
 <div class="flex h-svh flex-col">
 	<Navbar />
-	<main class="flex-auto px-5 md:px-10">
+	<main class="grid flex-auto place-items-center px-5 md:px-10">
 		<slot />
 	</main>
 </div>

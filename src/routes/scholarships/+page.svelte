@@ -15,7 +15,7 @@
 	Scholarships
 </h1>
 <div
-	class="mb-10 grid gap-5 rounded-xl border-2 px-5 pt-8 shadow-md dark:shadow-muted md:mx-5 md:px-7 md:pt-10 lg:grid-cols-2"
+	class="mb-10 grid w-full gap-5 rounded-xl border-2 px-5 pt-8 shadow-md dark:shadow-muted md:mx-5 md:px-7 md:pt-10 lg:grid-cols-2"
 >
 	{#each items as item}
 		<ScholarshipCard scholarship={item} />

@@ -21,7 +21,7 @@
 
 <nav
 	class={cn(
-		'mx-2 flex items-baseline justify-between rounded-none rounded-b-xl border-2 border-t-0 py-3 pl-1 pr-4 shadow-md dark:shadow-muted sm:py-5 sm:pl-4 sm:pr-7 lg:mx-5 lg:px-10',
+		'z-10 mx-2 flex items-baseline justify-between rounded-xl border-2 border-t-0 bg-inherit py-3 pl-1 pr-4 shadow-md dark:shadow-muted sm:py-5 sm:pl-4 sm:pr-7 lg:mx-5 lg:px-10',
 		className,
 	)}
 >

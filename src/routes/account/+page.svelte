@@ -12,7 +12,7 @@
 </h1>
 
 <div
-	class="mb-7 grid gap-5 rounded-xl border-2 px-5 pt-8 shadow-md dark:shadow-muted md:mx-5 md:px-7 md:pt-10"
+	class="mb-7 grid w-full gap-5 rounded-xl border-2 px-5 pt-8 shadow-md dark:shadow-muted md:mx-5 md:px-7 md:pt-10"
 >
 	<AccountForm form={data.form} />
 </div>
