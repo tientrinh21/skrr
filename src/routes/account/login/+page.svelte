@@ -13,6 +13,6 @@
 	})
 </script>
 
-<div class="grid place-items-center">
+<div class="grid w-full place-items-center">
 	<RegisterLoginTabs loginForm={data.loginForm} registerForm={data.registerForm} />
 </div>

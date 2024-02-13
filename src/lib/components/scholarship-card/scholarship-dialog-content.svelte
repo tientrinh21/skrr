@@ -170,7 +170,7 @@
 					>
 						{scholarship.specific_qualifications}
 					</Drawer.Trigger>
-					<Drawer.Content>
+					<Drawer.Content class="mx-auto w-[95%] rounded-lg">
 						<div class="mx-auto w-full max-w-xl">
 							<Drawer.Header>
 								<Drawer.Title>Specific qualifications</Drawer.Title>
@@ -178,7 +178,7 @@
 							<div class="mx-5 my-3 text-wrap text-left">
 								{scholarship.specific_qualifications}
 							</div>
-							<Drawer.Footer>
+							<Drawer.Footer class="mb-3">
 								<Drawer.Close asChild let:builder>
 									<Button builders={[builder]}>Close</Button>
 								</Drawer.Close>
