@@ -3,7 +3,6 @@
 	import type { PageData } from './$types'
 	import { afterNavigate } from '$app/navigation'
 	import { toast } from 'svelte-sonner'
-	import { isRedirect } from '@sveltejs/kit'
 
 	export let data: PageData
 
