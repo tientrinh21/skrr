@@ -10,8 +10,7 @@ export const load = (async ({ locals, url }) => {
 	const { income, grade, gpa, university, major, region } = locals.user
 
 	const page = Number(url.searchParams.get('page')) || 1
-	const filter = generateFilterParam({ income, grade, gpa, major, region })
-	console.log(filter)
+	const filter = generateFilterParam({ income, grade, gpa, major, region, university })
 
 	// Fetch data
 	const scholarships = await locals.pb.collection('scholarships').getList<Scholarship>(page, 10, {

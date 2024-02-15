@@ -15,7 +15,8 @@
 			toast('Creating account...')
 		},
 		async onResult({ result }) {
-			if (result.status === 400) toast.error('Error!')
+			if (result.status === 400) toast.error('Error! Invalid input.')
+			if (result.status === 401) toast.error('Password and confirm password does not match!')
 			if (result.status === 200) {
 				toast.success('Success')
 				$isRegisterOrLogin = 'login'

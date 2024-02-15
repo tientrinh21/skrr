@@ -23,7 +23,6 @@ export const actions: Actions = {
 			return fail(422, { form })
 
 		const data = proccessAccountData(form.data)
-		console.log(data)
 
 		//  Update user info
 		try {

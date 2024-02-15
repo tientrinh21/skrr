@@ -37,6 +37,7 @@ export const actions: Actions = {
 		const registerForm = await superValidate(request, registerSchema)
 
 		if (!registerForm.valid) return fail(400, { registerForm })
+    if (registerForm.data.password !== registerForm.data.passwordConfirm) return fail(401, { registerForm })
 
 		// Register user
 		try {

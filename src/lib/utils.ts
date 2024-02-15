@@ -129,7 +129,7 @@ export const generateFilterParam = ({
 	const gradeFilter = grade ? `&& (grade_level = '[]' || grade_level ~ '${grade}')` : ''
 	const gpaFilter = (gpa ?? 0) > 0 ? `&& GPA_requirement <= ${gpa}` : ''
 	const universityFilter = university
-		? `&& (university = null || university ~ '${university})'`
+		? `&& (university = null || university ~ '${university}')`
 		: ''
 	const majorFilter = major ? `&& (major = null || major ~ '${major}')` : ''
 	const regionFilter = region ? `&& (region = null || region ~ '${region}')` : ''

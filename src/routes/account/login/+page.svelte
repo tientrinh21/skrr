@@ -9,7 +9,7 @@
 
 	afterNavigate(({ from, type }) => {
 		if (from?.route.id !== '/account/login' && (type === 'goto' || type === 'enter'))
-			toast('Please login to find scholarships just for you 📖')
+			toast('You need to login to use Recommend me 📖')
 	})
 </script>
 
