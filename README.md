@@ -1,38 +1,64 @@
-# create-svelte
+# Skrr - Scholarship recommendation service
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+![Hero img](./screenshots/skrr-home.png)
 
-## Creating a project
+The site is hosted on [skrr-skku.vercel.app](https://skrr-skku.vercel.app/).
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Table of contents
+- [Built with](#built-with)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+- [Features](#features)
+  - [Scholarships](#scholarships)
+  - [Recommend me](#recommend-me)
+  - [Account](#account)
+- [Author](#author)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Built with
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+### Frontend
+- **[SvelteKit](https://kit.svelte.dev/)**
+- **[Tailwind](https://tailwindcss.com/)** - Styling
+- **[Vercel](https://vercel.com/)** - Website deploying
 
-## Developing
+### Backend
+- **[Pocketbase](https://pocketbase.io/)** - Database, Auth
+- **[Pockethost](https://pockethost.io/)** - Database hosting
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Features
 
-```bash
-npm run dev
+### Scholarships
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+List all available scholarships, user can also use `search params` to find scholarships with more specific requirements.
 
-## Building
+For example, [skrr-skku.vercel.app/scholarships?income=2&gpa=2.8&grade=1](https://skrr-skku.vercel.app/scholarships?income=2&gpa=2.8&grade=1) will display scholarships with requirements that contains level 2 income, minimum GPA is lower than 2.8, and eligible for freshmen.
 
-To create a production version of your app:
+`Pagination` is also implemented
 
-```bash
-npm run build
-```
+![Scholarships page](./screenshots/skrr-scholarships.png)
 
-You can preview the production build with `npm run preview`.
+### Recommend me
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Similar to `Scholarships page` but this use user account's information to search for suitable scholarships with extra search fields: universities, major, regions.
+
+When user select a scholarship, a card will pop up displaying more information about the scholarship. The user can then click `Apply` button to direct to the application website.
+
+![Scholarship Info](./screenshots/skrr-info.png)
+
+In mobile, the specific requirements might be too long, a drawer will be shown when user click on the text.
+
+![Specific requirements drawer](./screenshots/skrr-specific.png)
+
+### Account
+
+- **Login / Register**
+
+The auth was handled by PocketBase's built-in feature.
+
+- **Update user's information**
+
+![Update info](./screenshots/skrr-update.png)
+
+## Author
+
+Built by [Tien Trinh](https://tientrinh.netlify.app/)
