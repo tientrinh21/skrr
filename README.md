@@ -45,7 +45,7 @@ When user select a scholarship, a card will pop up displaying more information a
 
 ![Scholarship Info](./screenshots/skrr-info.png)
 
-In mobile, the specific requirements might be too long, a drawer will be shown when user click on the text.
+In mobile, some requirements might be too long which lead to overflowing, a drawer will be shown when user click on the text.
 
 ![Specific requirements drawer](./screenshots/skrr-specific.png)
 

@@ -59,7 +59,7 @@
 	let:config
 	method="POST"
 	class="mb-8 space-y-8 md:mb-10 md:px-5 lg:px-10 lg:py-5"
-	debug={true}
+	debug={false}
 >
 	<Form.Item>
 		<Form.Field {config} name="name">
@@ -87,7 +87,8 @@
 		</Form.Field>
 	</Form.Item>
 	<Form.Item>
-		<Form.Field {config} name="grade">
+		<Form.Field {config} name="grade" let:attrs>
+			{@const { value } = attrs.input}
 			<Form.Label>Grade</Form.Label>
 			<Form.Select>
 				<Form.SelectTrigger placeholder="Please select your academic level" />

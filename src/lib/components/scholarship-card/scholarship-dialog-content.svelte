@@ -147,9 +147,28 @@
 
 		<div class="flex flex-wrap items-center justify-start gap-1.5">
 			{#if scholarship.region}
-				<span class="ml-1 font-bold">
-					{scholarship.region}
-				</span>
+				<Drawer.Root>
+					<Drawer.Trigger
+						class="ml-1 max-h-20 max-w-72 truncate text-pretty text-left font-bold sm:max-h-56"
+					>
+						{scholarship.region}
+					</Drawer.Trigger>
+					<Drawer.Content class="mx-auto w-[95%] rounded-lg">
+						<div class="mx-auto w-full max-w-xl">
+							<Drawer.Header>
+								<Drawer.Title>Region</Drawer.Title>
+							</Drawer.Header>
+							<div class="mx-5 my-3 text-wrap text-left">
+								{scholarship.region}
+							</div>
+							<Drawer.Footer class="mb-3">
+								<Drawer.Close asChild let:builder>
+									<Button builders={[builder]}>Close</Button>
+								</Drawer.Close>
+							</Drawer.Footer>
+						</div>
+					</Drawer.Content>
+				</Drawer.Root>
 			{:else}
 				<span class="ml-1 font-bold">전국</span>
 			{/if}
@@ -166,7 +185,7 @@
 			{#if scholarship.specific_qualifications}
 				<Drawer.Root>
 					<Drawer.Trigger
-						class="ml-1 max-h-20 max-w-36 truncate text-pretty text-left font-bold sm:max-h-56 sm:max-w-80"
+						class="ml-1 max-h-20 max-w-72 truncate text-pretty text-left font-bold sm:max-h-56"
 					>
 						{scholarship.specific_qualifications}
 					</Drawer.Trigger>
@@ -186,10 +205,6 @@
 						</div>
 					</Drawer.Content>
 				</Drawer.Root>
-
-				<!-- <span class="ml-1 max-h-20 max-w-64 truncate text-pretty font-bold">
-					{scholarship.specific_qualifications}
-				</span> -->
 			{:else}
 				<span class="ml-1 font-bold text-muted-foreground">없음</span>
 			{/if}

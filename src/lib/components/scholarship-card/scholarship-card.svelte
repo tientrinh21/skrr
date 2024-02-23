@@ -6,7 +6,7 @@
 	export let scholarship: Scholarship
 </script>
 
-<Dialog.Root>
+<Dialog.Root closeOnOutsideClick={false}>
 	<Dialog.Trigger>
 		<ScholarshipTrigger {scholarship} />
 	</Dialog.Trigger>
